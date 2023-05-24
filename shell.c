@@ -27,7 +27,8 @@ int main(void) {
             perror("fork");
             exit(EXIT_FAILURE);
         } else if (ret == 0) {
-            ret = execve(command, (char *[]){command, NULL}, NULL);
+            char* args[] = {command, NULL};
+            ret = execve(command, args, NULL);
             if (ret == -1) {
                 perror("execve");
                 exit(EXIT_FAILURE);
